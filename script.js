@@ -70,6 +70,7 @@ player 1 goes than player two
 
 
 
+
 what does it need to do?
 
 pick x or o
