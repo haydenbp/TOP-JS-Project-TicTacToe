@@ -1,9 +1,22 @@
 
 //store gameboard as an array
-let board = ['O','x','x','x','x','x','x','x','x']
+let board = ['O','O','O','O','O','O','O','O','x']
 
 
 //players stored as objects
+
+function Player (sign) {
+
+    this.sign = sign
+
+    this.getSign = ()=>{
+
+        return sign
+    }   
+    
+
+}
+
 
 //gameboard function
 
@@ -60,6 +73,7 @@ const gameBoard = (() =>{
     return makeGameBoard()
 
 })();
+
 
 /*
 How do i interact?
