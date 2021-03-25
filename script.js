@@ -1,7 +1,11 @@
 
 //store gameboard as an array
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+let board = ['O','x','x','x','x','x','x','x','x']
+>>>>>>> parent of 67afde8 (Update script.js)
 =======
 let board = ['O','x','x','x','x','x','x','x','x']
 >>>>>>> parent of 67afde8 (Update script.js)
@@ -9,6 +13,7 @@ let board = ['O','x','x','x','x','x','x','x','x']
 
 //players stored as objects
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 function Player (sign) {
 
@@ -47,6 +52,8 @@ const gameController = (() => {
 })();
 
 console.log(gameController.currentPlayer)
+=======
+>>>>>>> parent of 67afde8 (Update script.js)
 =======
 >>>>>>> parent of 67afde8 (Update script.js)
 //gameboard function
