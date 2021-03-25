@@ -1,10 +1,15 @@
 
 //store gameboard as an array
+<<<<<<< HEAD
 
+=======
+let board = ['O','x','x','x','x','x','x','x','x']
+>>>>>>> parent of 67afde8 (Update script.js)
 
 
 //players stored as objects
 
+<<<<<<< HEAD
 function Player (sign) {
 
     this.sign = sign
@@ -42,6 +47,8 @@ const gameController = (() => {
 })();
 
 console.log(gameController.currentPlayer)
+=======
+>>>>>>> parent of 67afde8 (Update script.js)
 //gameboard function
 
 const gameBoard = (() =>{
@@ -104,7 +111,6 @@ const gameBoard = (() =>{
     this.makeGameBoard()
 
 })();
-
 
 /*
 How do i interact?
