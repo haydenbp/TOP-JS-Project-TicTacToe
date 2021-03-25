@@ -1,6 +1,6 @@
 
 //store gameboard as an array
-let board = ['O','O','O','O','O','O','O','O','x']
+
 
 
 //players stored as objects
@@ -17,31 +17,58 @@ function Player (sign) {
 
 }
 
+//first move
+
+const gameController = (() => {
+
+    const PlayerX = new Player('X')
+
+    const PlayerO = new Player('O')
+
+    this.currentPlayer = 'X'
+
+    this.changePlayer = () =>{
+
+        if(this.currentPlayer= 'X'){
+
+            this.currentPlayer = 'O'
+        }else{
+            this.currentPlayer = 'X'
+        }
+    }
+
+
+
+})();
+
 
 //gameboard function
 
 const gameBoard = (() =>{
 
+    let board = ['O','O','O','O','O','O','O','O','x']
+
     const boardDiv = document.getElementById('board')
     
-    function makeGameBoard(){
+    this.makeGameBoard = () =>{
 
         for(let i = 0; i < board.length; i++){
-            makeGameTile(board[i],i)
+           this.makeGameTile(board[i],i)
         }
 
     }
 
-    function clearBoard() {
+    this.clearBoard = () => {
+
         while (boardDiv.firstChild) {
             boardDiv.removeChild(boardDiv.firstChild);
         }
-        makeGameBoard()
+        this.makeGameBoard()
     }
 
     //function to generate individual tiles on board
 
-    function makeGameTile(arrayElement,index){
+    this.makeGameTile = (arrayElement,index) =>{
 
         
 
@@ -55,9 +82,13 @@ const gameBoard = (() =>{
 
         gameTile.addEventListener('click',()=>{
 
-            board[index] = 'x';
+            board[index] = gameController.currentPlayer
 
-            clearBoard()
+            console.log(gameController.currentPlayer)
+
+            gameController.changePlayer
+
+            this.clearBoard()
 
             console.log(board)
         })
@@ -70,7 +101,7 @@ const gameBoard = (() =>{
 
 
 
-    return makeGameBoard()
+    this.makeGameBoard()
 
 })();
 
