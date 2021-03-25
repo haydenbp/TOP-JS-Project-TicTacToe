@@ -1,90 +1,89 @@
 
 //store gameboard as an array
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-let board = ['O','x','x','x','x','x','x','x','x']
->>>>>>> parent of 67afde8 (Update script.js)
-=======
-let board = ['O','x','x','x','x','x','x','x','x']
->>>>>>> parent of 67afde8 (Update script.js)
+
 
 
 //players stored as objects
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-function Player (sign) {
 
-    this.sign = sign
 
-    this.getSign = ()=>{
 
-        return sign
-    }   
-    
 
-}
+
 
 //first move
 
 const gameController = (() => {
 
-    const PlayerX = new Player('X')
-
-    const PlayerO = new Player('O')
-
-    this.currentPlayer = 'X'
-
-    this.changePlayer = () =>{
-
-        if(this.currentPlayer= 'X'){
-
-            this.currentPlayer = 'O'
-        }else{
-            this.currentPlayer = 'X'
-        }
+    const playerX = {
+    
+        sign: 'X',
+    
+        getSign: function (){return 'X'}
+    
+    }
+    
+    const playerO = {
+        
+        sign: 'O',
+    
+        getSign: function (){return 'O'}
+    
     }
 
+    let currentPlayer = playerO
+
+    changePlayer = () =>{
+
+        console.log('rip')
+
+        currentPlayer.sign == 'X' ? currentPlayer.sign = 'O' : currentPlayer.sign = 'X'
+    }
+
+   
+
+    return{
+
+        currentPlayer,
+        changePlayer
+    }
 
 
 })();
 
-console.log(gameController.currentPlayer)
-=======
->>>>>>> parent of 67afde8 (Update script.js)
-=======
->>>>>>> parent of 67afde8 (Update script.js)
+console.log(gameController.currentPlayer.sign)
+
+
 //gameboard function
 
 const gameBoard = (() =>{
 
-    let board = ['O','O','O','O','O','O','O','O','x']
+    let board = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
 
     const boardDiv = document.getElementById('board')
     
-    this.makeGameBoard = () =>{
+    const makeGameBoard = () =>{
 
         for(let i = 0; i < board.length; i++){
-           this.makeGameTile(board[i],i)
+           makeGameTile(board[i],i)
         }
+
+        checkWinnerModule.checkWinner
 
     }
 
-    this.clearBoard = () => {
+    const clearBoard = () => {
 
         while (boardDiv.firstChild) {
             boardDiv.removeChild(boardDiv.firstChild);
         }
-        this.makeGameBoard()
+        makeGameBoard()
     }
 
     //function to generate individual tiles on board
 
-    this.makeGameTile = (arrayElement,index) =>{
-
-        
+    const makeGameTile = (arrayElement,index) =>{
 
         const gameTile = document.createElement('div')
 
@@ -96,15 +95,16 @@ const gameBoard = (() =>{
 
         gameTile.addEventListener('click',()=>{
 
-            board[index] = gameController.currentPlayer
+            board[index] = gameController.currentPlayer.sign
+
+            gameController.changePlayer()
 
             console.log(gameController.currentPlayer)
 
-            gameController.changePlayer
+           // gameController.changePlayer
 
-            this.clearBoard()
+            clearBoard()
 
-            console.log(board)
         })
 
         boardDiv.appendChild(gameTile,index)
@@ -113,12 +113,55 @@ const gameBoard = (() =>{
 
     }
 
+    makeGameBoard()
 
+    return{
 
-    this.makeGameBoard()
+    clearBoard,
 
+    board,
+
+    makeGameBoard
+
+    }
+
+   
 })();
 
+
+
+
+const checkWinnerModule = (() =>{
+
+
+
+    const winningIndexes = [
+        [0,1,2],
+        [3,4,5],
+        [6,7,8],
+        [0,3,6],
+        [1,4,7],
+        [2,5,8],
+        [0,4,8],
+        [2,4,6],
+    ];
+
+    checkWinner = () =>{
+
+    winningIndexes.forEach((array) => {
+
+        console.log(gameController.currentPlayer.sign)
+
+        if( gameBoard.board[array[0]] === gameController.currentPlayer.sign && gameBoard.board[array[2]] === gameController.currentPlayer.sign && gameBoard.board[array[1]]=== gameController.currentPlayer.sign){
+            console.log(gameController.currentPlayer.sign)
+        }
+    
+    })
+
+    }
+
+
+})();
 /*
 How do i interact?
 
