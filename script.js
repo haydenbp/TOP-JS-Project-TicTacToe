@@ -41,7 +41,7 @@ const gameController = (() => {
 
 })();
 
-
+console.log(gameController.currentPlayer)
 //gameboard function
 
 const gameBoard = (() =>{
