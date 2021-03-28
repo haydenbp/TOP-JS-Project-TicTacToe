@@ -69,7 +69,7 @@ const gameBoard = (() =>{
            makeGameTile(board[i],i)
         }
 
-        checkWinnerModule.checkWinner
+        
 
     }
 
@@ -104,6 +104,8 @@ const gameBoard = (() =>{
            // gameController.changePlayer
 
             clearBoard()
+
+            checkWinnerModule.checkWinner()
 
         })
 
@@ -148,17 +150,22 @@ const checkWinnerModule = (() =>{
 
     checkWinner = () =>{
 
-    winningIndexes.forEach((array) => {
+        console.log('ree')
 
-        console.log(gameController.currentPlayer.sign)
+        
+        winningIndexes.forEach((array) => {
+
+        
 
         if( gameBoard.board[array[0]] === gameController.currentPlayer.sign && gameBoard.board[array[2]] === gameController.currentPlayer.sign && gameBoard.board[array[1]]=== gameController.currentPlayer.sign){
             console.log(gameController.currentPlayer.sign)
         }
     
-    })
+         })
 
     }
+
+    return {checkWinner}
 
 
 })();
