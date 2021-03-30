@@ -1,5 +1,5 @@
 
-//store gameboard as an array
+//store gameboard as an element
 
 
 
@@ -83,11 +83,11 @@ const gameBoard = (() =>{
 
     //function to generate individual tiles on board
 
-    const makeGameTile = (arrayElement,index) =>{
+    const makeGameTile = (elementElement,index) =>{
 
         const gameTile = document.createElement('div')
 
-        gameTile.innerText = arrayElement
+        gameTile.innerText = elementElement
 
         gameTile.classList = 'gametile';
 
@@ -97,15 +97,20 @@ const gameBoard = (() =>{
 
             board[index] = gameController.currentPlayer.sign
 
-            gameController.changePlayer()
+            
 
-            console.log(gameController.currentPlayer)
+            console.log(gameController.currentPlayer,'ree')
 
            // gameController.changePlayer
 
-            clearBoard()
 
-            checkWinnerModule.checkWinner()
+           CheckWinnerModule.checkWinner()
+
+           clearBoard()
+
+           gameController.changePlayer()
+
+            
 
         })
 
@@ -133,12 +138,10 @@ const gameBoard = (() =>{
 
 
 
-const checkWinnerModule = (() =>{
-
-
+const CheckWinnerModule = (() => {
 
     const winningIndexes = [
-        [0,1,2],
+        ['eeee',1,2],
         [3,4,5],
         [6,7,8],
         [0,3,6],
@@ -148,18 +151,19 @@ const checkWinnerModule = (() =>{
         [2,4,6],
     ];
 
-    checkWinner = () =>{
+    console.log('rEEEE')
 
-        console.log('ree')
+    const checkWinner = () =>{
+
+        console.log('reWWWWe')
+        
+        winningIndexes.forEach(element => {
 
         
-        winningIndexes.forEach((array) => {
 
-        
-
-        if( gameBoard.board[array[0]] === gameController.currentPlayer.sign && gameBoard.board[array[2]] === gameController.currentPlayer.sign && gameBoard.board[array[1]]=== gameController.currentPlayer.sign){
-            console.log(gameController.currentPlayer.sign)
-        }
+            if( gameBoard.board[element[0]] === gameController.currentPlayer.sign && gameBoard.board[element[2]] === gameController.currentPlayer.sign && gameBoard.board[element[1]]=== gameController.currentPlayer.sign){
+                console.log('win')
+             }
     
          })
 
@@ -167,8 +171,23 @@ const checkWinnerModule = (() =>{
 
     return {checkWinner}
 
+})();
+
+/*
+const CheckWinnerModule = (() => {
+
+
+    const checkWinner = () => {console.log('jeeez')}
+
+
+    return {checkWinner}
+
+
+
+
 
 })();
+/*
 /*
 How do i interact?
 
@@ -183,7 +202,7 @@ what does it need to do?
 
 pick x or o
 
-store game board in array
+store game board in element
 
 change the board when interacted with
 
