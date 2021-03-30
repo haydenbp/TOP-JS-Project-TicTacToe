@@ -102,11 +102,11 @@ const gameBoard = (() =>{
             console.log(gameController.currentPlayer,'ree')
 
            // gameController.changePlayer
-
+           
 
            CheckWinnerModule.checkWinner()
 
-           clearBoard()
+           
 
            gameController.changePlayer()
 
@@ -159,10 +159,10 @@ const CheckWinnerModule = (() => {
         
         winningIndexes.forEach(element => {
 
-        
+            gameBoard.clearBoard()
 
             if( gameBoard.board[element[0]] === gameController.currentPlayer.sign && gameBoard.board[element[2]] === gameController.currentPlayer.sign && gameBoard.board[element[1]]=== gameController.currentPlayer.sign){
-                console.log('win')
+                console.log(gameController.currentPlayer.sign + '   wins')
              }
     
          })
