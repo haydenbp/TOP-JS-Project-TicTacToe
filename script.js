@@ -88,40 +88,23 @@ const gameBoard = (() =>{
         gameTile.addEventListener('click',()=>{
 
             board[index] = gameController.currentPlayer.sign
+         
+            CheckWinnerModule.checkWinner()
 
-            
-
-            console.log(gameController.currentPlayer,'ree')
-
-           // gameController.changePlayer
-           
-
-           CheckWinnerModule.checkWinner()
-
-           
-
-           gameController.changePlayer()
-
-            
-
+            gameController.changePlayer()
         })
 
-        boardDiv.appendChild(gameTile,index)
-
-        
+        boardDiv.appendChild(gameTile)       
 
     }
 
     makeGameBoard()
 
     return{
-
     clearBoard,
-
     board,
-
+    boardDiv,
     makeGameBoard
-
     }
 
    
@@ -143,28 +126,30 @@ const CheckWinnerModule = (() => {
         [2,4,6],
     ];
 
-    console.log('rEEEE')
-
     const displayWinner = () =>{
 
         console.log(gameController.currentPlayer.sign + ' ree  wins')
 
+        const winnerDiv = document.createElement('div')
+
+        
+
+        winnerDiv.innerText = 'REEEEEEEEEEEEEEEEEEEEE'
+
+        document.getElementById('ofirst').appendChild(winnerDiv)
+
+        alert()
 
         //change style of winner div
     }
 
     const displayDraw = () =>{
 
-        console.log(gameController.currentPlayer.sign + ' ree  wins')
+        console.log('draw')
 
 
         //change style of winner div
     }
-
-
-
-
-
 
     const checkWinner = () =>{
 
