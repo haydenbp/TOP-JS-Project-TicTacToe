@@ -180,7 +180,7 @@ const CheckWinnerModule = (() => {
 
             else if(!gameBoard.board.includes(" ")){
 
-                console.log('draw')
+                displayDraw()
             }
     
          })
