@@ -16,23 +16,15 @@
 
 const gameController = (() => {
 
-    const playerX = {
+    let currentPlayer = {
     
         sign: 'X',
     
-        getSign: function (){return 'X'}
-    
-    }
-    
-    const playerO = {
         
-        sign: 'O',
-    
-        getSign: function (){return 'O'}
     
     }
+    
 
-    let currentPlayer = playerO
 
     changePlayer = () =>{
 
@@ -141,7 +133,7 @@ const gameBoard = (() =>{
 const CheckWinnerModule = (() => {
 
     const winningIndexes = [
-        ['eeee',1,2],
+        [0,1,2],
         [3,4,5],
         [6,7,8],
         [0,3,6],
@@ -153,6 +145,27 @@ const CheckWinnerModule = (() => {
 
     console.log('rEEEE')
 
+    const displayWinner = () =>{
+
+        console.log(gameController.currentPlayer.sign + ' ree  wins')
+
+
+        //change style of winner div
+    }
+
+    const displayDraw = () =>{
+
+        console.log(gameController.currentPlayer.sign + ' ree  wins')
+
+
+        //change style of winner div
+    }
+
+
+
+
+
+
     const checkWinner = () =>{
 
         console.log('reWWWWe')
@@ -162,8 +175,13 @@ const CheckWinnerModule = (() => {
             gameBoard.clearBoard()
 
             if( gameBoard.board[element[0]] === gameController.currentPlayer.sign && gameBoard.board[element[2]] === gameController.currentPlayer.sign && gameBoard.board[element[1]]=== gameController.currentPlayer.sign){
-                console.log(gameController.currentPlayer.sign + '   wins')
+                displayWinner()
              }
+
+            else if(!gameBoard.board.includes(" ")){
+
+                console.log('draw')
+            }
     
          })
 
