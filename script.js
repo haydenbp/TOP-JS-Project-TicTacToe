@@ -1,72 +1,44 @@
 
-//store gameboard as an element
-
-
-
-
-//players stored as objects
-
-
-
-
-
-
-
-//first move
 
 const gameController = (() => {
 
-    let currentPlayer = {
-    
+    let currentPlayer = {   
         sign: 'X',
-    
-        
-    
     }
-    
-
 
     changePlayer = () =>{
-
-        console.log('rip')
-
         currentPlayer.sign == 'X' ? currentPlayer.sign = 'O' : currentPlayer.sign = 'X'
+        console.log(currentPlayer.sign)
     }
 
-   
-
     return{
-
         currentPlayer,
         changePlayer
     }
 
-
 })();
 
 console.log(gameController.currentPlayer.sign)
-
 
 //gameboard function
 
 const gameBoard = (() =>{
 
     let board = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
+    const boardDiv = document.getElementById('board') 
 
-    const boardDiv = document.getElementById('board')
-    
     const makeGameBoard = () =>{
-
+        console.log(board)
         for(let i = 0; i < board.length; i++){
            makeGameTile(board[i],i)
         }
+    }
 
-        
-
+    const zeroBoard = () =>{
+        board = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
     }
 
     const clearBoard = () => {
-
         while (boardDiv.firstChild) {
             boardDiv.removeChild(boardDiv.firstChild);
         }
@@ -78,19 +50,14 @@ const gameBoard = (() =>{
     const makeGameTile = (elementElement,index) =>{
 
         const gameTile = document.createElement('div')
-
         gameTile.innerText = elementElement
-
         gameTile.classList = 'gametile';
-
         gameTile.id = `${index}`
 
         gameTile.addEventListener('click',()=>{
-
             board[index] = gameController.currentPlayer.sign
-         
             CheckWinnerModule.checkWinner()
-
+            gameBoard.clearBoard()
             gameController.changePlayer()
         })
 
@@ -102,6 +69,7 @@ const gameBoard = (() =>{
 
     return{
     clearBoard,
+    zeroBoard,
     board,
     boardDiv,
     makeGameBoard
@@ -125,30 +93,43 @@ const CheckWinnerModule = (() => {
         [0,4,8],
         [2,4,6],
     ];
+    const finCOn = document.getElementById('finalContainer')
+    const winnerDiv = document.getElementById('win')
+    const drawDiv = document.getElementById('draw')
+
+  
 
     const displayWinner = () =>{
 
-        console.log(gameController.currentPlayer.sign + ' ree  wins')
+        console.log(gameBoard.board)
 
-        const winnerDiv = document.createElement('div')
+        winnerDiv.innerText = 'The Winner is: ' + gameController.currentPlayer.sign
+        winnerDiv.style.display = 'block'
 
-        
+        winnerDiv.addEventListener('click',()=>{
+            resetGame()
+        })
 
-        winnerDiv.innerText = 'REEEEEEEEEEEEEEEEEEEEE'
-
-        document.getElementById('ofirst').appendChild(winnerDiv)
-
-        alert()
-
-        //change style of winner div
+        console.log('win')
     }
 
     const displayDraw = () =>{
 
+        drawDiv.innerText = 'Draw'
+        drawDiv.style.display = 'block'
+
+        drawDiv.addEventListener('click',()=>{
+            resetGame()
+        })
+        
         console.log('draw')
+    }
 
-
-        //change style of winner div
+    const resetGame = () =>{
+        gameBoard.zeroBoard()
+        gameBoard.clearBoard()
+        drawDiv.style.display = 'none'
+        winnerDiv.style.display = 'none'
     }
 
     const checkWinner = () =>{
@@ -156,19 +137,14 @@ const CheckWinnerModule = (() => {
         console.log('reWWWWe')
         
         winningIndexes.forEach(element => {
-
-            gameBoard.clearBoard()
-
-            if( gameBoard.board[element[0]] === gameController.currentPlayer.sign && gameBoard.board[element[2]] === gameController.currentPlayer.sign && gameBoard.board[element[1]]=== gameController.currentPlayer.sign){
+            if( gameBoard.board[element[0]] === gameController.currentPlayer.sign && gameBoard.board[element[1]] === gameController.currentPlayer.sign && gameBoard.board[element[2]]=== gameController.currentPlayer.sign){
                 displayWinner()
-             }
+            }
 
             else if(!gameBoard.board.includes(" ")){
-
                 displayDraw()
             }
-    
-         })
+        })
 
     }
 

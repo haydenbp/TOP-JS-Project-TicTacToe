@@ -1,4 +1,28 @@
+
+
+#finalContariner,#win,#draw{
+    display: none;
+}
+
+
+
+#board{
+    height: 500px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    background-color: #2196F3;
+    
+
+}
+
 .gametile{
-    height:50px;
-    width: 50px;
+    height: 158px;
+    width: 158px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+   
+    font-size: 30px;
+    text-align: center;
 }
