@@ -28,14 +28,17 @@ const gameBoard = (() =>{
     const boardDiv = document.getElementById('board') 
 
     const makeGameBoard = () =>{
-        console.log(board)
+        
         for(let i = 0; i < board.length; i++){
            makeGameTile(board[i],i)
         }
     }
 
     const zeroBoard = () =>{
-        board = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
+        for (let i = 0; i < board.length; i++) {
+            board[i] = ' ';
+        }
+        console.log(board)
     }
 
     const clearBoard = () => {
@@ -101,7 +104,7 @@ const CheckWinnerModule = (() => {
 
     const displayWinner = () =>{
 
-        console.log(gameBoard.board)
+        
 
         winnerDiv.innerText = 'The Winner is: ' + gameController.currentPlayer.sign
         winnerDiv.style.display = 'block'
@@ -137,6 +140,10 @@ const CheckWinnerModule = (() => {
         console.log('reWWWWe')
         
         winningIndexes.forEach(element => {
+
+            
+
+            console.log(gameBoard.board[element[0]],gameBoard.board[element[1]],gameBoard.board[element[2]])
             if( gameBoard.board[element[0]] === gameController.currentPlayer.sign && gameBoard.board[element[1]] === gameController.currentPlayer.sign && gameBoard.board[element[2]]=== gameController.currentPlayer.sign){
                 displayWinner()
             }

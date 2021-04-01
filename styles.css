@@ -1,10 +1,29 @@
 
 
-#finalContariner,#win,#draw{
-    display: none;
+#floatcontainer,#win,#draw{
+    visibility: hidden;
+    height: 500px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    background-color: #2196F3;
+}
+
+#floatcontainer{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
 }
 
 
+#boardcontainer{
+    width: 640px; 
+    height: auto;
+    margin: 0 auto;
+    padding: 75px;
+    position: relative;
+}
 
 #board{
     height: 500px;
