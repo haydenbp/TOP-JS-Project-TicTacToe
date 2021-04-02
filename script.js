@@ -57,6 +57,9 @@ const gameBoard = (() =>{
         gameTile.classList = 'gametile';
         gameTile.id = `${index}`
 
+        const gameTileContainer = document.createElement('div')
+        gameTileContainer.classList = 'gametilecontainer';
+
         gameTile.addEventListener('click',()=>{
             board[index] = gameController.currentPlayer.sign
             CheckWinnerModule.checkWinner()
@@ -64,7 +67,9 @@ const gameBoard = (() =>{
             gameController.changePlayer()
         })
 
-        boardDiv.appendChild(gameTile)       
+        gameTileContainer.appendChild(gameTile)
+
+        boardDiv.appendChild(gameTileContainer)       
 
     }
 
@@ -96,7 +101,7 @@ const CheckWinnerModule = (() => {
         [0,4,8],
         [2,4,6],
     ];
-    const finCOn = document.getElementById('finalContainer')
+    const finCOn = document.getElementById('finalcontainer')
     const winnerDiv = document.getElementById('win')
     const drawDiv = document.getElementById('draw')
 
@@ -107,6 +112,7 @@ const CheckWinnerModule = (() => {
         
 
         winnerDiv.innerText = 'The Winner is: ' + gameController.currentPlayer.sign
+        finCOn.style.display = 'block'
         winnerDiv.style.display = 'block'
 
         winnerDiv.addEventListener('click',()=>{
@@ -119,6 +125,7 @@ const CheckWinnerModule = (() => {
     const displayDraw = () =>{
 
         drawDiv.innerText = 'Draw'
+        finCOn.style.display = 'block'
         drawDiv.style.display = 'block'
 
         drawDiv.addEventListener('click',()=>{
@@ -131,6 +138,7 @@ const CheckWinnerModule = (() => {
     const resetGame = () =>{
         gameBoard.zeroBoard()
         gameBoard.clearBoard()
+        finCOn.style.display = 'none'
         drawDiv.style.display = 'none'
         winnerDiv.style.display = 'none'
     }

@@ -1,19 +1,7 @@
 
 
-#floatcontainer,#win,#draw{
-    visibility: hidden;
-    height: 500px;
-    width: 500px;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 10px;
-    background-color: #2196F3;
-}
-
-#floatcontainer{
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
+#finalcontainer,#win,#draw{
+    display: none;
 }
 
 
@@ -31,17 +19,59 @@
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 10px;
-    background-color: #2196F3;
+    background-color: #334b5f;
     
 
 }
 
-.gametile{
+.gametilecontainer{
     height: 158px;
     width: 158px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(171, 204, 25, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
-   
+    position: relative;
     font-size: 30px;
     text-align: center;
 }
+
+.gametile{
+    font-size: 99px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    width: 158px;
+    height: 138px;
+    background-color: rgba(105, 160, 223, 0.8);
+    /* Center vertically and horizontally */
+    position: absolute;
+    padding-top: 20px;
+  
+    
+}
+
+#finalcontainer{
+
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: -50px;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+
+
+}
+
+#win,#draw {
+    color: cornsilk;
+    font-size: 100px;
+    margin: 10% auto; /* 15% from the top and centered */
+    padding-left: 35%;
+     
+    width: 80%; /* Could be more or less, depending on screen size */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+  }
+  
