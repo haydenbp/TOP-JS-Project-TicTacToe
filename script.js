@@ -61,10 +61,13 @@ const gameBoard = (() =>{
         gameTileContainer.classList = 'gametilecontainer';
 
         gameTile.addEventListener('click',()=>{
+
+            if(board[index] == ' '){
             board[index] = gameController.currentPlayer.sign
             CheckWinnerModule.checkWinner()
             gameBoard.clearBoard()
             gameController.changePlayer()
+            }
         })
 
         gameTileContainer.appendChild(gameTile)
@@ -72,6 +75,10 @@ const gameBoard = (() =>{
         boardDiv.appendChild(gameTileContainer)       
 
     }
+
+    document.getElementById('button').addEventListener('click',()=>{
+        CheckWinnerModule.resetGame()
+    })
 
     makeGameBoard()
 
@@ -163,7 +170,7 @@ const CheckWinnerModule = (() => {
 
     }
 
-    return {checkWinner}
+    return {checkWinner,resetGame}
 
 })();
 
